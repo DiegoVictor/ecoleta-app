@@ -3,10 +3,13 @@
     "es6": true
   },
   "extends": [
-    "plugin:react/recommended",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript/recommended",
     "airbnb",
     "prettier",
-    "prettier/react"
+    "prettier/@typescript-eslint",
+    "plugin:prettier/recommended"
   ],
   "globals": {
     "Atomics": "readonly",
