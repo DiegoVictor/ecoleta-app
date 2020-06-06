@@ -31,14 +31,21 @@ export const Description = styled.Text`
 
 export const Footer = styled.View``;
 
-export const Input = styled.TextInput`
-  background-color: #fff;
-  border-radius: 10px;
-  font-size: 16px;
-  height: 60px;
-  margin-bottom: 8px;
-  padding: 0px 24px;
-`;
+export const Select = {
+  viewContainer: {
+    backgroundColor: '#fff',
+    borderRadius: 10,
+    height: 60,
+    paddingHorizontal: 24,
+    marginBottom: 8,
+  },
+  inputAndroid: {
+    fontSize: 18,
+    height: 60,
+    color: '#333',
+  },
+};
+
 export const Button = styled(RectButton)`
   align-items: center;
   background-color: #34cb79;
