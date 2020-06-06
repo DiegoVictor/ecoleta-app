@@ -53,7 +53,7 @@ export const PinBox = styled.View`
 export const PinArrow = styled.View`
   align-items: center;
   position: absolute;
-  top: 62px;
+  top: 60px;
   width: 90px;
 `;
 
