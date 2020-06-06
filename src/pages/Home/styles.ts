@@ -59,6 +59,8 @@ export const Button = styled(RectButton)`
 export const Icon = styled.View`
   align-items: center;
   background-color: rgba(0, 0, 0, 0.1);
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
   justify-content: center;
   height: 60px;
   width: 60px;
