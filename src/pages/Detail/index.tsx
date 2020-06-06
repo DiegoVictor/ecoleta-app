@@ -24,12 +24,12 @@ interface DetailParams {
   point_id: number;
 }
 
-interface Location {
+interface Point {
   point: {
-    image: string;
     name: string;
     email: string;
     whatsapp: string;
+    image_url: string;
     city: string;
     uf: string;
   };
@@ -39,7 +39,7 @@ interface Location {
 }
 
 const Detail: React.FC = () => {
-  const [location, setLocation] = useState<Location>({} as Location);
+  const [location, setLocation] = useState<Point>({} as Point);
 
   const navigation = useNavigation();
 
@@ -88,7 +88,7 @@ const Detail: React.FC = () => {
         <Cover
           resizeMode="cover"
           source={{
-            uri: location.point.image,
+            uri: location.point.image_url,
           }}
         />
         <Name>{location.point.name}</Name>

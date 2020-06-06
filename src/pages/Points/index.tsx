@@ -32,7 +32,7 @@ interface Item {
 interface Point {
   id: number;
   name: string;
-  image: string;
+  image_url: string;
   latitude: number;
   longitude: number;
 }
@@ -154,7 +154,7 @@ const Points: React.FC = () => {
                   <PinBox>
                     <PinImage
                       source={{
-                        uri: point.image,
+                        uri: point.image_url,
                       }}
                       resizeMode="cover"
                     />
