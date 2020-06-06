@@ -14,7 +14,9 @@ export default () => {
       <AppStack.Navigator
         headerMode="none"
         screenOptions={{
-          cardStyle: '#F0F0F5',
+          cardStyle: {
+            backgroundColor: '#F0F0F5',
+          },
         }}
       >
         <AppStack.Screen name="Home" component={Home} />
