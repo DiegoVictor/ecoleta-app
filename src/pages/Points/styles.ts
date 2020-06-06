@@ -76,7 +76,11 @@ export const Items = styled.View`
   margin-top: 16px;
 `;
 
-export const Item = styled(TouchableOpacity)`
+export const Item = styled(TouchableOpacity)<{
+  selected: boolean;
+  activeOpacity: number;
+  onPress: () => void;
+}>`
   align-items: center;
   background-color: #fff;
   border-color: #eee;
