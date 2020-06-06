@@ -28,9 +28,10 @@ export const Name = styled.Text`
 `;
 
 export const Items = styled.Text`
-  color: #6c6c80;
+  color: #34cb79;
   font-family: 'Roboto_400Regular';
-  font-size: 16px;
+  font-size: 20px;
+  font-weight: 500;
   line-height: 24px;
   margin-top: 8px;
 `;
