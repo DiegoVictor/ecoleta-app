@@ -36,17 +36,24 @@ export const Map = styled(MapView)`
 `;
 
 export const Pin = styled(Marker)`
-  height: 80px;
+  height: 100px;
   width: 90px;
 `;
 
-export const Box = styled.View`
+export const PinBox = styled.View`
   align-items: center;
   background-color: #34cb79;
   border-radius: 8px;
   flex-direction: column;
   height: 70px;
   overflow: hidden;
+  width: 90px;
+`;
+
+export const PinArrow = styled.View`
+  align-items: center;
+  position: absolute;
+  top: 62px;
   width: 90px;
 `;
 

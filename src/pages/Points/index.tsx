@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { TouchableOpacity, ScrollView, Alert } from 'react-native';
+import { TouchableOpacity, ScrollView, Alert, View } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { SvgUri } from 'react-native-svg';
 import * as Location from 'expo-location';
+import { AntDesign } from '@expo/vector-icons';
 
 import api from '../../services/api';
 import {
@@ -13,12 +14,13 @@ import {
   MapContainer,
   Map,
   Pin,
-  Box,
   PinImage,
   PinTitle,
   Items,
   Item,
   Label,
+  PinBox,
+  PinArrow,
 } from './styles';
 
 interface Item {
@@ -149,7 +151,7 @@ const Points: React.FC = () => {
                     longitude: point.longitude,
                   }}
                 >
-                  <Box>
+                  <PinBox>
                     <PinImage
                       source={{
                         uri: point.image,
@@ -157,7 +159,10 @@ const Points: React.FC = () => {
                       resizeMode="cover"
                     />
                     <PinTitle>{point.name.slice(0, 10)}</PinTitle>
-                  </Box>
+                  </PinBox>
+                  <PinArrow>
+                    <AntDesign name="caretdown" size={22} color="#34CB79" />
+                  </PinArrow>
                 </Pin>
               ))}
             </Map>
