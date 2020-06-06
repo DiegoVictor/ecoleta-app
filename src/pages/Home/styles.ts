@@ -72,5 +72,6 @@ export const Label = styled.Text`
   font-family: 'Roboto_500Medium';
   font-size: 16px;
   justify-content: center;
+  margin-left: -25px;
   text-align: center;
 `;
