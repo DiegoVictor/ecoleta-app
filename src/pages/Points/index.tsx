@@ -48,7 +48,7 @@ interface PointsParams {
 
 const Points: React.FC = () => {
   const [items, setItems] = useState<Item[]>([]);
-  const [selected_items, setSelectedItems] = useState<number[]>([]);
+  const [selectedItems, setSelectedItems] = useState<number[]>([]);
   const [position, setPosition] = useState<LatLng>({});
   const [points, setPoints] = useState<Point[]>([]);
 
@@ -66,10 +66,15 @@ const Points: React.FC = () => {
   }, []);
 
   const handleSelectItem = useCallback(
-      setSelectedItems([...selected_items, id]);
-    }
+    (id: number) => {
+      if (selectedItems.includes(id)) {
+        const filteredItems = selectedItems.filter(item => item !== id);
+        setSelectedItems(filteredItems);
+      } else {
+        setSelectedItems([...selectedItems, id]);
+      }
     },
-    [selected_items],
+    [selectedItems],
   );
 
   useEffect(() => {
@@ -86,14 +91,15 @@ const Points: React.FC = () => {
   useEffect(() => {
     (async () => {
       try {
-        if (selected_items.length > 0) {
+        if (selectedItems.length > 0) {
           const { data } = await api.get('/points', {
             params: {
               city,
               uf,
-              items: selected_items,
+              items: selectedItems,
             },
           });
+
           setPoints(data);
         } else {
           setPoints([]);
@@ -102,7 +108,7 @@ const Points: React.FC = () => {
         Alert.alert('Opa! Alguma coisa deu errado, tente reabrir o Ecoleta!');
       }
     })();
-  }, [city, uf, selected_items]);
+  }, [city, uf, selectedItems]);
 
   useEffect(() => {
     (async () => {
@@ -176,7 +182,7 @@ const Points: React.FC = () => {
             <Item
               activeOpacity={0.6}
               key={item.image_url.toString()}
-              selected={selected_items.includes(item.id)}
+              selected={selectedItems.includes(item.id)}
               onPress={() => handleSelectItem(item.id)}
             >
               <SvgUri width={42} height={42} uri={item.image_url} />
