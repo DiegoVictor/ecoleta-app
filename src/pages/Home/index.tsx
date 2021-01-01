@@ -32,7 +32,7 @@ interface SelectItem {
   value: string;
 }
 
-const Home = () => {
+const Home: React.FC = () => {
   const [ufs, setUfs] = useState<SelectItem[]>([]);
   const [uf, setUf] = useState('');
   const [cities, setCities] = useState<SelectItem[]>([]);
