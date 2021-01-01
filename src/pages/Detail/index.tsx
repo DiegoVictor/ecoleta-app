@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Linking, Alert } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Feather, FontAwesome } from '@expo/vector-icons';
@@ -46,22 +46,22 @@ const Detail: React.FC = () => {
   const route = useRoute();
   const { point_id } = route.params as DetailParams;
 
-  const handleNavigationToHome = () => {
+  const handleNavigationToHome = useCallback(() => {
     navigation.goBack();
-  };
+  }, []);
 
-  const handleComposeMail = () => {
+  const handleComposeMail = useCallback(() => {
     MailComposer.composeAsync({
       subject: 'Interesse na coleta de resíduos',
       recipients: [location.point.email],
     });
-  };
+  }, [location]);
 
-  const handleWhatsApp = () => {
+  const handleWhatsApp = useCallback(() => {
     Linking.openURL(
       `whatsapp://send?phone=${location.point.whatsapp}&text=Tenho interesse sobre coleta de resíduos`,
     );
-  };
+  }, [location]);
 
   useEffect(() => {
     (async () => {

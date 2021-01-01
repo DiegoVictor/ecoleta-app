@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Feather } from '@expo/vector-icons';
 import { View, Image, Text, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
@@ -40,11 +40,11 @@ const Home = () => {
 
   const navigation = useNavigation();
 
-  const handleNavigationToPoints = () => {
+  const handleNavigationToPoints = useCallback(() => {
     navigation.navigate('Points', { uf, city });
-  };
+  }, [uf, city]);
 
-  const handleSelectedUf = (value: string) => {
+  const handleSelectedUf = useCallback((value: string) => {
     setUf(value);
 
     if (value.length > 0 && value !== uf) {
