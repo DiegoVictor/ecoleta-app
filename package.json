@@ -21,6 +21,7 @@
     "axios": "^0.19.2",
     "babel-plugin-dotenv-import": "^2.1.0",
     "expo": "^40.0.0",
+    "expo-app-loading": "^1.0.1",
     "expo-constants": "~9.3.3",
     "expo-font": "~8.4.0",
     "expo-location": "~10.0.0",
