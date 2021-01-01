@@ -1,9 +1,10 @@
 import React, { useCallback, useEffect, useState } from 'react';
+import { TouchableOpacity, ScrollView, Alert } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import { useNavigation, useRoute } from '@react-navigation/native';
-import { SvgUri } from 'react-native-svg';
 import * as Location from 'expo-location';
 import { AntDesign } from '@expo/vector-icons';
+import { SvgUri } from 'react-native-svg';
 
 import api from '../../services/api';
 import {
