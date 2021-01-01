@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { Feather } from '@expo/vector-icons';
 import { View, Image, Text, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import RNPickerSelect from 'react-native-picker-select';
+import { Picker } from '@react-native-community/picker';
 
 import ibge from '../../services/ibge';
 import Background from '../../assets/home-background.png';
@@ -30,6 +30,11 @@ interface City {
 interface SelectItem {
   label: string;
   value: string;
+  key: string;
+}
+
+interface UfPickerItem extends SelectItem {
+  key: string;
 }
 
 const Home: React.FC = () => {
@@ -47,51 +52,48 @@ const Home: React.FC = () => {
   const handleSelectedUf = useCallback((value: string) => {
     setUf(value);
 
-    if (value.length > 0 && value !== uf) {
-      (async () => {
-        try {
-          const { data } = await ibge.get<City[]>(
-            `/estados/${value}/municipios`,
-          );
-          if (data.length > 0) {
-            setCities(
-              data.map(({ nome }) => ({ label: nome, value: nome })).sort(),
-            );
-          }
-        } catch (err) {
-          Alert.alert(
-            'Opa! Alguma coisa deu errado ao tentar carregar a lista de municípios, tente reabrir o Ecoleta!',
-          );
-        }
-      })();
-    }
-  };
+    (async () => {
+      try {
+        const { data } = await ibge.get<City[]>(`/estados/${value}/municipios`);
+        setCities(
+          data
+            .map(({ nome }) => ({ label: nome, value: nome, key: nome }))
+            .sort(),
+        );
+      } catch (err) {
+        Alert.alert(
+          'Opa! Alguma coisa deu errado ao tentar carregar a lista de municípios, tente reabrir o Ecoleta!',
+        );
+      }
+    })();
+  }, []);
 
   useEffect(() => {
     (async () => {
       try {
         const { data } = await ibge.get<UF[]>('/estados');
-        if (data.length > 0) {
-          setUfs(
-            data
-              .map(({ sigla }) => ({
-                label: sigla,
-                value: sigla,
-                key: sigla,
-              }))
-              .sort((a, b) => {
-                if (a.label > b.label) {
-                  return 1;
-                }
 
-                if (a.label < b.label) {
-                  return -1;
-                }
+        const uniqueItems: { [key: string]: UfPickerItem } = {};
 
-                return 0;
-              }),
-          );
-        }
+        data.forEach(({ sigla }) => {
+          if (!uniqueItems[sigla]) {
+            return (uniqueItems[sigla] = {
+              label: sigla,
+              value: sigla,
+              key: sigla,
+            });
+          }
+        });
+
+        setUfs(
+          Object.values(uniqueItems).sort((a, b) => {
+            if (a.label > b.label) {
+              return 1;
+            }
+
+            return -1;
+          }),
+        );
       } catch (err) {
         Alert.alert(
           'Opa! Alguma coisa deu errado ao tentar carregar a lista de estados, tente reabrir o Ecoleta!',
@@ -114,28 +116,38 @@ const Home: React.FC = () => {
       </Main>
 
       <Footer>
-        <RNPickerSelect
-          placeholder={{
-            label: 'Selecione uma UF',
-            value: '',
-            key: 'UF',
-          }}
-          onValueChange={value => handleSelectedUf(value)}
-          items={ufs}
-          value={uf}
-          style={Select}
-        />
-        <RNPickerSelect
-          placeholder={{
-            label: 'Selecione uma cidade',
-            value: '',
-            key: 'Cidade',
-          }}
-          onValueChange={value => setCity(value)}
-          items={cities}
-          value={city}
-          style={Select}
-        />
+        <Picker
+          onValueChange={value => handleSelectedUf(String(value))}
+          selectedValue={uf}
+          style={Select.viewContainer}
+          itemStyle={Select.inputAndroid}
+          testID="state"
+        >
+          <Picker.Item
+            value=""
+            label="Selecione uma UF"
+            color={Select.inputAndroid.color}
+          />
+          {ufs.map(uf => (
+            <Picker.Item key={uf.key} value={uf.value} label={uf.label} />
+          ))}
+        </Picker>
+        <Picker
+          onValueChange={value => setCity(String(value))}
+          selectedValue={city}
+          style={Select.viewContainer}
+          itemStyle={Select.inputAndroid}
+          testID="city"
+        >
+          <Picker.Item
+            value=""
+            label="Selecione uma cidade"
+            color={Select.inputAndroid.color}
+          />
+          {cities.map(city => (
+            <Picker.Item key={city.key} value={city.value} label={city.label} />
+          ))}
+        </Picker>
 
         <Button onPress={handleNavigationToPoints}>
           <Icon>
