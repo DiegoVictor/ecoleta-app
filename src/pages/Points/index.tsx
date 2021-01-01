@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import { TouchableOpacity, ScrollView, Alert, View } from 'react-native';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Feather } from '@expo/vector-icons';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { SvgUri } from 'react-native-svg';
@@ -58,22 +57,20 @@ const Points: React.FC = () => {
 
   const navigation = useNavigation();
 
-  const handleNavigationToHome = () => {
+  const handleNavigationToHome = useCallback(() => {
     navigation.goBack();
-  };
+  }, []);
 
-  const handleNavigationToDetail = (id: number) => {
+  const handleNavigationToDetail = useCallback((id: number) => {
     navigation.navigate('Detail', { point_id: id });
-  };
+  }, []);
 
-  const handleSelectItem = (id: number) => {
-    if (selected_items.includes(id)) {
-      const filtered_items = selected_items.filter(item => item !== id);
-      setSelectedItems(filtered_items);
-    } else {
+  const handleSelectItem = useCallback(
       setSelectedItems([...selected_items, id]);
     }
-  };
+    },
+    [selected_items],
+  );
 
   useEffect(() => {
     (async () => {
