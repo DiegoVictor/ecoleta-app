@@ -1,0 +1,11 @@
+language: node_js
+install:
+  - npm install
+  - npm install -g codecov
+node_js:
+  - 14
+before_script:
+  - cp .env.example .env
+script:
+  - yarn test
+  - codecov
