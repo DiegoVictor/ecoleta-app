@@ -81,7 +81,7 @@ const Detail: React.FC = () => {
   return (
     <SafeArea>
       <Container>
-        <TouchableOpacity onPress={handleNavigationToHome}>
+        <TouchableOpacity onPress={handleNavigationToHome} testID="back">
           <Feather name="arrow-left" size={20} color="#34CB79" />
         </TouchableOpacity>
 
@@ -103,11 +103,16 @@ const Detail: React.FC = () => {
       </Container>
       <Footer>
         <Button onPress={handleWhatsApp}>
-          <FontAwesome name="whatsapp" size={20} color="#FFF" />
+          <FontAwesome
+            name="whatsapp"
+            size={20}
+            color="#FFF"
+            testID="whatsapp"
+          />
           <Label>Whatsapp</Label>
         </Button>
         <Button onPress={handleComposeMail}>
-          <Feather name="mail" size={20} color="#FFF" />
+          <Feather name="mail" size={20} color="#FFF" testID="mail" />
           <Label>Email</Label>
         </Button>
       </Footer>
