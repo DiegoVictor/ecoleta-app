@@ -19,7 +19,7 @@ This app version allow everyone to see all collect points near of you or other l
 
 # Screenshots
 Click to expand.<br>
-<img src="https://raw.githubusercontent.com/DiegoVictor/ecoleta-app/master/screenshots/home.jpg" width="32%">
+<img src="https://raw.githubusercontent.com/DiegoVictor/ecoleta-app/master/screenshots/home.png" width="32%">
 <img src="https://raw.githubusercontent.com/DiegoVictor/ecoleta-app/master/screenshots/points.jpg" width="32%">
 <img src="https://raw.githubusercontent.com/DiegoVictor/ecoleta-app/master/screenshots/detail.jpg" width="32%">
 
