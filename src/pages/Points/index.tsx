@@ -129,7 +129,7 @@ const Points: React.FC = () => {
   return (
     <>
       <Container>
-        <TouchableOpacity onPress={handleNavigationToHome}>
+        <TouchableOpacity onPress={handleNavigationToHome} testID="back">
           <Feather name="arrow-left" size={20} color="#34CB79" />
         </TouchableOpacity>
 
@@ -154,6 +154,7 @@ const Points: React.FC = () => {
                     latitude: point.latitude,
                     longitude: point.longitude,
                   }}
+                  testID={`point_${point.id}`}
                 >
                   <PinBox>
                     <PinImage
@@ -185,6 +186,7 @@ const Points: React.FC = () => {
               key={item.image_url.toString()}
               selected={selectedItems.includes(item.id)}
               onPress={() => handleSelectItem(item.id)}
+              testID={`item_${item.id}`}
             >
               <SvgUri width={42} height={42} uri={item.image_url} />
               <Label>{item.title}</Label>
