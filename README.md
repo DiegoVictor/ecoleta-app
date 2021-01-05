@@ -1,21 +1,29 @@
 # [App] Ecoleta
-[![react-native](https://img.shields.io/badge/react--native-0.61.4-61dafb?style=flat-square&logo=react)](https://reactnative.dev/)
-[![styled-components](https://img.shields.io/badge/styled_components-5.1.1-db7b86?style=flat-square&logo=styled-components)](https://styled-components.com/)
+[![Travis (.org)](https://img.shields.io/travis/DiegoVictor/ecoleta-app?logo=travis&style=flat-square)](https://travis-ci.org/DiegoVictor/ecoleta-app)
+[![react-native](https://img.shields.io/badge/react--native-0.63.2-61dafb?style=flat-square&logo=react)](https://reactnative.dev/)
+[![styled-components](https://img.shields.io/badge/styled_components-5.2.0-db7b86?style=flat-square&logo=styled-components)](https://styled-components.com/)
 [![eslint](https://img.shields.io/badge/eslint-6.8.0-4b32c3?style=flat-square&logo=eslint)](https://eslint.org/)
 [![airbnb-style](https://flat.badgen.net/badge/style-guide/airbnb/ff5a5f?icon=airbnb)](https://github.com/airbnb/javascript)
-[![expo](https://img.shields.io/badge/expo-37.0.3-000000?style=flat-square&logo=expo)](https://expo.io/)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)<br>
+[![jest](https://img.shields.io/badge/jest-25.5.4-brightgreen?style=flat-square&logo=jest)](https://jestjs.io/)
+[![expo](https://img.shields.io/badge/expo-40.0.0-000000?style=flat-square&logo=expo)](https://expo.io/)
+[![coverage](https://img.shields.io/codecov/c/gh/DiegoVictor/ecoleta-app?logo=codecov&style=flat-square)](https://codecov.io/gh/DiegoVictor/ecoleta-app)
+[![MIT License](https://img.shields.io/badge/license-MIT-green?style=flat-square)](https://github.com/DiegoVictor/ecoleta-app/blob/master/LICENSE)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
+
+
 This app version allow everyone to see all collect points near of you or other locations. All the resources used by this application comes from its [`API`](https://github.com/DiegoVictor/ecoleta-api).
 
 ## Table of Contents
 * [Screenshots](#screenshots)
 * [Installing](#installing)
   * [Configuring](#configuring)
-    * [app.json](#appjson)
+    * [.env](#env)
     * [API](#api)
 * [Usage](#usage)
   * [Expo](#expo)
   * [OS](#os)
+* [Running the tests](#running-the-tests)
+  * [Coverage report](#coverage-report)
 
 # Screenshots
 Click to expand.<br>
@@ -37,8 +45,8 @@ $ npm install
 ## Configuring
 Configure your environment variables and remember to start the [API](https://github.com/DiegoVictor/ecoleta-api) before to start this app.
 
-### app.json
-In this file you may configure the API's url. Rename the `app.example.json` in the root directory to `app.json` then update with your settings **only the keys under `extra` key**.
+### .env
+In this file you may configure the API's url. Rename the `.env.example` in the root directory to `.env` then just update with your settings.
 
 key|description|default
 ---|---|---
@@ -61,3 +69,16 @@ $ npm run start
 
 ## OS
 This app was tested only with Android through USB connection and [Genymotion](https://www.genymotion.com/) (Emulator), is strongly recommended to use the same operational system, but of course you can use an emulator or a real device connected through wifi or USB.
+
+# Running the tests
+[Jest](https://jestjs.io/) was the choice to test the app, to run:
+```
+$ yarn test
+```
+Or:
+```
+$ npm run test
+```
+
+## Coverage report
+You can see the coverage report inside `tests/coverage`. They are automatically created after the tests run.
