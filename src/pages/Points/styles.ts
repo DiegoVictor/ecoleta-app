@@ -80,6 +80,7 @@ export const Item = styled(TouchableOpacity)<{
   selected: boolean;
   activeOpacity: number;
   onPress: () => void;
+  testID: string;
 }>`
   align-items: center;
   background-color: #fff;
