@@ -149,7 +149,7 @@ const Home: React.FC = () => {
           ))}
         </Picker>
 
-        <Button onPress={handleNavigationToPoints}>
+        <Button onPress={handleNavigationToPoints} testID="submit">
           <Icon>
             <Text>
               <Feather name="arrow-right" color="#FFF" size={24} />
