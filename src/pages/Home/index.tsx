@@ -46,7 +46,11 @@ const Home: React.FC = () => {
   const navigation = useNavigation();
 
   const handleNavigationToPoints = useCallback(() => {
-    navigation.navigate('Points', { uf, city });
+    if (uf && city) {
+      navigation.navigate('Points', { uf, city });
+    } else {
+      Alert.alert('Escolha um estado e uma cidade!');
+    }
   }, [uf, city]);
 
   const handleSelectedUf = useCallback((value: string) => {
