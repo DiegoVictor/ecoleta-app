@@ -4,7 +4,6 @@ import { fireEvent, render } from '@testing-library/react-native';
 import MockAdapter from 'axios-mock-adapter';
 import * as Location from 'expo-location';
 import { Alert } from 'react-native';
-// import 'isomorphic-fetch';
 
 import Points from '../../src/pages/Points';
 import api from '../../src/services/api';
