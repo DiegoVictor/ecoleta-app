@@ -6,7 +6,7 @@ factory.define(
   {},
   {
     point: {
-      id: () => String(faker.random.number()),
+      id: () => String(faker.datatype.number()),
       name: faker.name.findName,
       city: faker.address.city,
       uf: faker.address.state,
@@ -28,7 +28,7 @@ factory.define(
   'Item',
   {},
   {
-    id: () => String(faker.random.number()),
+    id: () => String(faker.datatype.number()),
     title: faker.random.word,
     image_url: faker.image.imageUrl,
   },

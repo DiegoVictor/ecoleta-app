@@ -24,7 +24,7 @@ interface Point {
   }[];
 }
 
-const point_id = faker.random.number();
+const point_id = faker.datatype.number();
 const mockedParams = {
   point_id,
 };
