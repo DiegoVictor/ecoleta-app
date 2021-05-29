@@ -49,6 +49,39 @@ describe('Home', () => {
     expect(mockedNavigate).toHaveBeenCalledWith('Points', { uf, city });
   });
 
+  it('should be alerted to choose a state and city', async () => {
+    const uf = faker.address.stateAbbr();
+    const city = faker.address.city();
+
+    ibgeMock
+      .onGet('/estados')
+      .reply(200, [
+        {
+          sigla: uf,
+        },
+      ])
+      .onGet(`/estados/${uf}/municipios`)
+      .reply(200, [{ nome: city }]);
+
+    const alert = jest.spyOn(Alert, 'alert');
+
+    const { getByTestId } = render(<Home />);
+
+    fireEvent.press(getByTestId('submit'));
+
+    expect(mockedNavigate).not.toHaveBeenCalled();
+    expect(alert).toHaveBeenCalledWith('Escolha um estado e uma cidade!');
+
+    await wait(async () => {
+      fireEvent(getByTestId('state'), 'onValueChange', uf);
+    });
+
+    fireEvent.press(getByTestId('submit'));
+
+    expect(mockedNavigate).not.toHaveBeenCalled();
+    expect(alert).toHaveBeenCalledWith('Escolha um estado e uma cidade!');
+  });
+
   it('should be able to sort states alphabetically', async () => {
     const uf = 'RJ';
     const city = faker.address.city();
