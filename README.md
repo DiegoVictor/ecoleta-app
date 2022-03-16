@@ -1,5 +1,5 @@
 # [App] Ecoleta
-[![Travis (.org)](https://img.shields.io/travis/DiegoVictor/ecoleta-app?logo=travis&style=flat-square)](https://travis-ci.org/DiegoVictor/ecoleta-app)
+[![Travis](https://img.shields.io/travis/com/DiegoVictor/ecoleta-app?logo=travis&style=flat-square)](https://app.travis-ci.com/github/DiegoVictor/ecoleta-app)
 [![typescript](https://img.shields.io/badge/typescript-4.0.5-3178c6?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
 [![react-native](https://img.shields.io/badge/react--native-0.63.2-61dafb?style=flat-square&logo=react)](https://reactnative.dev/)
 [![styled-components](https://img.shields.io/badge/styled_components-5.2.0-db7b86?style=flat-square&logo=styled-components)](https://styled-components.com/)
