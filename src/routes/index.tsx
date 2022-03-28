@@ -12,8 +12,8 @@ export default () => {
   return (
     <NavigationContainer>
       <AppStack.Navigator
-        headerMode="none"
         screenOptions={{
+          headerShown: false,
           cardStyle: {
             backgroundColor: '#F0F0F5',
           },
