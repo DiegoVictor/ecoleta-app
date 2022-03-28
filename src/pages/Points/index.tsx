@@ -113,7 +113,7 @@ const Points: React.FC = () => {
 
   useEffect(() => {
     (async () => {
-      const { status } = await Location.requestPermissionsAsync();
+      const { status } = await Location.requestForegroundPermissionsAsync();
       if (status === 'granted') {
         const location = await Location.getCurrentPositionAsync();
         const { latitude, longitude } = location.coords;
