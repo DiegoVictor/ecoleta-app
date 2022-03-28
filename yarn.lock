@@ -1943,6 +1943,11 @@
   resolved "https://registry.npmjs.org/@types/factory-girl/-/factory-girl-5.0.8.tgz"
   integrity sha512-e2QLjQxuGBN/zl/e8yLOmqZ7JaU+UzTC7knFkzVbM+7J4DpWa3PQ1UDKU65ocYrhBZqRRJZ/jVILY0jahReH1A==
 
+"@types/faker@^5.5.9":
+  version "5.5.9"
+  resolved "https://registry.npmjs.org/@types/faker/-/faker-5.5.9.tgz"
+  integrity sha512-uCx6mP3UY5SIO14XlspxsGjgaemrxpssJI0Ol+GfhxtcKpv9pgRZYsS4eeKeHVLje6Qtc8lGszuBI461+gVZBA==
+
 "@types/geojson@^7946.0.7":
   version "7946.0.8"
   resolved "https://registry.npmjs.org/@types/geojson/-/geojson-7946.0.8.tgz"
