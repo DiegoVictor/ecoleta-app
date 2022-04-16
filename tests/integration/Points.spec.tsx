@@ -1,5 +1,5 @@
 import React from 'react';
-import faker from 'faker';
+import faker from '@faker-js/faker';
 import { fireEvent, render } from '@testing-library/react-native';
 import MockAdapter from 'axios-mock-adapter';
 import * as Location from 'expo-location';

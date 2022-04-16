@@ -1348,6 +1348,11 @@
     lodash.pick "^4.4.0"
     lodash.template "^4.5.0"
 
+"@faker-js/faker@^6.1.2":
+  version "6.1.2"
+  resolved "https://registry.yarnpkg.com/@faker-js/faker/-/faker-6.1.2.tgz#7093ea65e6d78eae388918a46968c083366bd621"
+  integrity sha512-QSvmexHCxeRUk1/yKmoEDaWB5Hohjvtim5g2JJwy8S/l0L4b3y/GxSpE6vN4SBoVGGahEQW21uqyRr7EofI35A==
+
 "@hapi/hoek@^9.0.0":
   version "9.2.1"
   resolved "https://registry.npmjs.org/@hapi/hoek/-/hoek-9.2.1.tgz"
@@ -1942,11 +1947,6 @@
   version "5.0.8"
   resolved "https://registry.npmjs.org/@types/factory-girl/-/factory-girl-5.0.8.tgz"
   integrity sha512-e2QLjQxuGBN/zl/e8yLOmqZ7JaU+UzTC7knFkzVbM+7J4DpWa3PQ1UDKU65ocYrhBZqRRJZ/jVILY0jahReH1A==
-
-"@types/faker@^5.5.9":
-  version "5.5.9"
-  resolved "https://registry.npmjs.org/@types/faker/-/faker-5.5.9.tgz"
-  integrity sha512-uCx6mP3UY5SIO14XlspxsGjgaemrxpssJI0Ol+GfhxtcKpv9pgRZYsS4eeKeHVLje6Qtc8lGszuBI461+gVZBA==
 
 "@types/geojson@^7946.0.7":
   version "7946.0.8"
