@@ -8,7 +8,7 @@
 [![jest](https://img.shields.io/badge/jest-25.5.4-brightgreen?style=flat-square&logo=jest)](https://jestjs.io/)
 [![expo](https://img.shields.io/badge/expo-40.0.0-000000?style=flat-square&logo=expo)](https://expo.io/)
 [![coverage](https://img.shields.io/codecov/c/gh/DiegoVictor/ecoleta-app?logo=codecov&style=flat-square)](https://codecov.io/gh/DiegoVictor/ecoleta-app)
-[![MIT License](https://img.shields.io/badge/license-MIT-green?style=flat-square)](https://github.com/DiegoVictor/ecoleta-app/blob/master/LICENSE)
+[![MIT License](https://img.shields.io/badge/license-MIT-green?style=flat-square)](https://github.com/DiegoVictor/ecoleta-app/blob/main/LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
 
@@ -28,9 +28,9 @@ This app version allow everyone to see all collect points near of you or other l
 
 # Screenshots
 Click to expand.<br>
-<img src="https://raw.githubusercontent.com/DiegoVictor/ecoleta-app/master/screenshots/home.png" width="32%">
-<img src="https://raw.githubusercontent.com/DiegoVictor/ecoleta-app/master/screenshots/points.jpg" width="32%">
-<img src="https://raw.githubusercontent.com/DiegoVictor/ecoleta-app/master/screenshots/detail.jpg" width="32%">
+<img src="https://raw.githubusercontent.com/DiegoVictor/ecoleta-app/main/screenshots/home.png" width="32%">
+<img src="https://raw.githubusercontent.com/DiegoVictor/ecoleta-app/main/screenshots/points.jpg" width="32%">
+<img src="https://raw.githubusercontent.com/DiegoVictor/ecoleta-app/main/screenshots/detail.jpg" width="32%">
 
 # Installing
 Easy peasy lemon squeezy:
