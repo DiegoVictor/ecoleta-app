@@ -78,16 +78,18 @@ describe('Points', () => {
       items: [{ title: item.title }],
     });
 
-    jest.spyOn(Location, 'requestPermissionsAsync').mockImplementation(() => {
-      return new Promise(resolve => {
-        resolve({
-          status: Location.PermissionStatus.GRANTED,
-          expires: 'never',
-          granted: false,
-          canAskAgain: true,
+    jest
+      .spyOn(Location, 'requestForegroundPermissionsAsync')
+      .mockImplementation(() => {
+        return new Promise(resolve => {
+          resolve({
+            status: Location.PermissionStatus.GRANTED,
+            expires: 'never',
+            granted: false,
+            canAskAgain: true,
+          });
         });
       });
-    });
 
     jest.spyOn(Location, 'getCurrentPositionAsync').mockImplementation(() => {
       return new Promise(resolve => {
@@ -127,16 +129,18 @@ describe('Points', () => {
       items: [{ title: item.title }],
     });
 
-    jest.spyOn(Location, 'requestPermissionsAsync').mockImplementation(() => {
-      return new Promise(resolve => {
-        resolve({
-          status: Location.PermissionStatus.GRANTED,
-          expires: 'never',
-          granted: false,
-          canAskAgain: true,
+    jest
+      .spyOn(Location, 'requestForegroundPermissionsAsync')
+      .mockImplementation(() => {
+        return new Promise(resolve => {
+          resolve({
+            status: Location.PermissionStatus.GRANTED,
+            expires: 'never',
+            granted: false,
+            canAskAgain: true,
+          });
         });
       });
-    });
 
     jest.spyOn(Location, 'getCurrentPositionAsync').mockImplementation(() => {
       return new Promise(resolve => {
