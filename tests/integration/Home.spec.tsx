@@ -1,5 +1,5 @@
 import React from 'react';
-import faker from '@faker-js/faker';
+import { faker } from '@faker-js/faker';
 import { fireEvent, render } from '@testing-library/react-native';
 import MockAdapter from 'axios-mock-adapter';
 import { Alert } from 'react-native';
@@ -21,8 +21,8 @@ describe('Home', () => {
   const ibgeMock = new MockAdapter(ibge);
 
   it('should be able to choose state and city', async () => {
-    const uf = faker.address.stateAbbr();
-    const city = faker.address.city();
+    const uf = faker.location.state({ abbreviated: true });
+    const city = faker.location.city();
 
     ibgeMock
       .onGet('/estados')
@@ -50,8 +50,8 @@ describe('Home', () => {
   });
 
   it('should be alerted to choose a state and city', async () => {
-    const uf = faker.address.stateAbbr();
-    const city = faker.address.city();
+    const uf = faker.location.state({ abbreviated: true });
+    const city = faker.location.city();
 
     ibgeMock
       .onGet('/estados')
@@ -84,7 +84,7 @@ describe('Home', () => {
 
   it('should be able to sort states alphabetically', async () => {
     const uf = 'RJ';
-    const city = faker.address.city();
+    const city = faker.location.city();
 
     ibgeMock
       .onGet('/estados')

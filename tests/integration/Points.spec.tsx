@@ -1,5 +1,5 @@
 import React from 'react';
-import faker from '@faker-js/faker';
+import { faker } from '@faker-js/faker';
 import { fireEvent, render } from '@testing-library/react-native';
 import MockAdapter from 'axios-mock-adapter';
 import * as Location from 'expo-location';
@@ -34,8 +34,8 @@ interface Point {
 const mockedNavigate = jest.fn();
 const mockedGoBack = jest.fn();
 const mockedParams = {
-  uf: faker.address.stateAbbr(),
-  city: faker.address.city(),
+  uf: faker.location.state({ abbreviated: true }),
+  city: faker.location.city(),
 };
 
 jest.mock('@react-navigation/native', () => {
@@ -96,8 +96,8 @@ describe('Points', () => {
         resolve({
           timestamp: new Date().getTime(),
           coords: {
-            latitude: Number(faker.address.latitude()),
-            longitude: Number(faker.address.longitude()),
+            latitude: Number(faker.location.latitude()),
+            longitude: Number(faker.location.longitude()),
             altitude: null,
             accuracy: null,
             altitudeAccuracy: null,
@@ -147,8 +147,8 @@ describe('Points', () => {
         resolve({
           timestamp: new Date().getTime(),
           coords: {
-            latitude: Number(faker.address.latitude()),
-            longitude: Number(faker.address.longitude()),
+            latitude: Number(faker.location.latitude()),
+            longitude: Number(faker.location.longitude()),
             altitude: null,
             accuracy: null,
             altitudeAccuracy: null,
@@ -217,8 +217,8 @@ describe('Points', () => {
         resolve({
           timestamp: new Date().getTime(),
           coords: {
-            latitude: Number(faker.address.latitude()),
-            longitude: Number(faker.address.longitude()),
+            latitude: Number(faker.location.latitude()),
+            longitude: Number(faker.location.longitude()),
             altitude: null,
             accuracy: null,
             altitudeAccuracy: null,

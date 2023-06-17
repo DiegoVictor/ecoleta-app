@@ -1,4 +1,4 @@
-import faker from '@faker-js/faker';
+import { faker } from '@faker-js/faker';
 import factory from 'factory-girl';
 
 factory.define(
@@ -6,19 +6,19 @@ factory.define(
   {},
   {
     point: {
-      id: () => String(faker.datatype.number()),
-      name: faker.name.findName,
-      city: faker.address.city,
-      uf: faker.address.state,
+      id: () => String(faker.number.int()),
+      name: faker.company.name,
+      city: faker.location.city,
+      uf: faker.location.state,
       email: faker.internet.email,
-      whatsapp: faker.phone.phoneNumber,
-      image_url: faker.image.imageUrl,
-      latitude: () => Number(faker.address.latitude()),
-      longitude: () => Number(faker.address.longitude()),
+      whatsapp: faker.phone.number,
+      image_url: faker.image.url,
+      latitude: () => Number(faker.location.latitude()),
+      longitude: () => Number(faker.location.longitude()),
     },
     items: [
       {
-        title: faker.random.word(),
+        title: faker.word.sample,
       },
     ],
   },
@@ -28,9 +28,9 @@ factory.define(
   'Item',
   {},
   {
-    id: () => String(faker.datatype.number()),
-    title: faker.random.word,
-    image_url: faker.image.imageUrl,
+    id: () => String(faker.number.int()),
+    title: faker.word.sample,
+    image_url: faker.image.url,
   },
 );
 

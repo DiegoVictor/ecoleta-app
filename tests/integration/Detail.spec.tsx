@@ -1,5 +1,5 @@
 import React from 'react';
-import faker from '@faker-js/faker';
+import { faker } from '@faker-js/faker';
 import { fireEvent, render } from '@testing-library/react-native';
 import MockAdapter from 'axios-mock-adapter';
 import * as MailComposer from 'expo-mail-composer';
@@ -24,7 +24,7 @@ interface Point {
   }[];
 }
 
-const point_id = faker.datatype.number();
+const point_id = faker.number.int();
 const mockedParams = {
   point_id,
 };
