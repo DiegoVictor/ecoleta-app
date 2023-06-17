@@ -41,7 +41,10 @@ const mockedParams = {
 jest.mock('@react-navigation/native', () => {
   return {
     useNavigation: () => {
-      return { goBack: mockedGoBack, navigate: mockedNavigate };
+      return {
+        goBack: mockedGoBack,
+        navigate: mockedNavigate,
+      };
     },
     useRoute: () => {
       return {
@@ -69,9 +72,9 @@ jest.mock('react-native-svg', () => {
   };
 });
 
-describe('Points', () => {
-  const apiMock = new MockAdapter(api);
+const apiMock = new MockAdapter(api);
 
+describe('Points', () => {
   it('should be able to go back to previous screen', async () => {
     const item = await factory.attrs<Item>('Item');
     const { point, items } = await factory.attrs<Point>('Point', {
@@ -165,7 +168,7 @@ describe('Points', () => {
       .onGet('/points')
       .reply(200, [point]);
 
-    const { getByTestId, debug } = render(<Points />);
+    const { getByTestId } = render(<Points />);
 
     await wait(() => expect(getByTestId(`item_${item.id}`)).toBeTruthy());
 
