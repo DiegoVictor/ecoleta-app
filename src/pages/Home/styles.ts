@@ -1,5 +1,5 @@
 import styled from 'styled-components/native';
-import { RectButton } from 'react-native-gesture-handler';
+import { Pressable } from 'react-native';
 
 export const Container = styled.ImageBackground`
   background-color: #f0f0f5;
@@ -46,7 +46,7 @@ export const Select = {
   },
 };
 
-export const Button = styled(RectButton)`
+export const Button = styled(Pressable)`
   align-items: center;
   background-color: #34cb79;
   border-radius: 10px;

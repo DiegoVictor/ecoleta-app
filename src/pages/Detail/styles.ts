@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 import styled from 'styled-components/native';
-import { RectButton } from 'react-native-gesture-handler';
+import { Pressable } from 'react-native';
 import Constants from 'expo-constants';
 
 export const SafeArea = styled.SafeAreaView`
@@ -62,7 +62,7 @@ export const Footer = styled.View`
   padding-bottom: 0px;
 `;
 
-export const Button = styled(RectButton)`
+export const Button = styled(Pressable)`
   align-items: center;
   background-color: #34cb79;
   border-radius: 10px;
