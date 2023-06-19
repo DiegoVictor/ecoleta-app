@@ -27,7 +27,7 @@
     "expo-location": "~15.1.1",
     "expo-mail-composer": "~12.1.1",
     "react": "18.2.0",
-    "react-native": "0.71.3",
+    "react-native": "0.71.8",
     "react-native-gesture-handler": "~2.9.0",
     "react-native-maps": "1.3.2",
     "react-native-picker-select": "^8.0.4",
