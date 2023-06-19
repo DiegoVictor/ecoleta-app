@@ -253,7 +253,7 @@ describe('Points', () => {
     });
 
     expect(mockedNavigate).toHaveBeenCalledWith('Detail', {
-      point_id: point.id,
+      pointId: point.id,
     });
   });
 

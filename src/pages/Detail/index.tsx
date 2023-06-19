@@ -21,7 +21,7 @@ import {
 } from './styles';
 
 interface DetailParams {
-  point_id: number;
+  pointId: number;
 }
 
 interface Point {

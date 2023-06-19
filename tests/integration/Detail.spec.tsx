@@ -24,9 +24,9 @@ interface Point {
   }[];
 }
 
-const point_id = faker.number.int();
+const pointId = faker.number.int();
 const mockedParams = {
-  point_id,
+  pointId,
 };
 const mockedGoBack = jest.fn();
 
@@ -49,7 +49,7 @@ describe('Detail', () => {
   it('should be able to see a collect point details', async () => {
     const { point, items } = await factory.attrs<Point>('Point');
 
-    apiMock.onGet(`/points/${point_id}`).reply(200, { point, items });
+    apiMock.onGet(`/points/${pointId}`).reply(200, { point, items });
 
     const { getByText } = render(<Detail />);
 
@@ -63,7 +63,7 @@ describe('Detail', () => {
   it('should be able to back to previous screen', async () => {
     const { point, items } = await factory.attrs<Point>('Point');
 
-    apiMock.onGet(`/points/${point_id}`).reply(200, { point, items });
+    apiMock.onGet(`/points/${pointId}`).reply(200, { point, items });
 
     const { getByTestId } = render(<Detail />);
 
@@ -77,7 +77,7 @@ describe('Detail', () => {
     const { point, items } = await factory.attrs<Point>('Point');
     const openURL = jest.spyOn(Linking, 'openURL');
 
-    apiMock.onGet(`/points/${point_id}`).reply(200, { point, items });
+    apiMock.onGet(`/points/${pointId}`).reply(200, { point, items });
 
     const { getByTestId } = render(<Detail />);
 
@@ -94,7 +94,7 @@ describe('Detail', () => {
     const { point, items } = await factory.attrs<Point>('Point');
     const composeAsync = jest.spyOn(MailComposer, 'composeAsync');
 
-    apiMock.onGet(`/points/${point_id}`).reply(200, { point, items });
+    apiMock.onGet(`/points/${pointId}`).reply(200, { point, items });
 
     const { getByTestId } = render(<Detail />);
 
@@ -111,7 +111,7 @@ describe('Detail', () => {
   it('should not be able to see a collect point details with network error', async () => {
     const alert = jest.spyOn(Alert, 'alert');
 
-    apiMock.onGet(`/points/${point_id}`).reply(500);
+    apiMock.onGet(`/points/${pointId}`).reply(500);
 
     render(<Detail />);
 

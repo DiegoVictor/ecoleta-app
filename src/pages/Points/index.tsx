@@ -63,7 +63,7 @@ const Points: React.FC = () => {
   }, []);
 
   const handleNavigationToDetail = useCallback((id: number) => {
-    navigation.navigate('Detail', { point_id: id });
+    navigate('Detail', { pointId: id });
   }, []);
 
   const handleSelectItem = useCallback(
