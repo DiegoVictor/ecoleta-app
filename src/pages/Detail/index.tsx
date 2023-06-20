@@ -41,13 +41,13 @@ interface Point {
 const Detail: React.FC = () => {
   const [location, setLocation] = useState<Point>({} as Point);
 
-  const navigation = useNavigation();
+  const { goBack } = useNavigation();
 
   const route = useRoute();
   const { pointId } = route.params as DetailParams;
 
   const handleNavigationToHome = useCallback(() => {
-    navigation.goBack();
+    goBack();
   }, []);
 
   const handleComposeMail = useCallback(() => {
@@ -66,13 +66,13 @@ const Detail: React.FC = () => {
   useEffect(() => {
     (async () => {
       try {
-        const { data } = await api.get(`/points/${point_id}`);
+        const { data } = await api.get(`/points/${pointId}`);
         setLocation(data);
       } catch (err) {
         Alert.alert('Opa! Alguma coisa deu errado, tente reabrir o Ecoleta!');
       }
     })();
-  }, [point_id]);
+  }, [pointId]);
 
   if (!location.point) {
     return null;
