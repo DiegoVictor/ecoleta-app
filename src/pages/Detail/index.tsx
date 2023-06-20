@@ -44,7 +44,7 @@ const Detail: React.FC = () => {
   const navigation = useNavigation();
 
   const route = useRoute();
-  const { point_id } = route.params as DetailParams;
+  const { pointId } = route.params as DetailParams;
 
   const handleNavigationToHome = useCallback(() => {
     navigation.goBack();
