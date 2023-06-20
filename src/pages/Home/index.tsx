@@ -2,11 +2,13 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { Feather } from '@expo/vector-icons';
 import { View, Image, Text, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { Picker } from '@react-native-community/picker';
+import { Picker } from '@react-native-picker/picker';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 import ibge from '../../services/ibge';
 import Background from '../../assets/home-background.png';
 import Logo from '../../assets/logo.png';
+import { StackParamList } from '../../routes';
 import {
   Container,
   Main,
@@ -37,17 +39,22 @@ interface UfPickerItem extends SelectItem {
   key: string;
 }
 
+type NavigateProps = NativeStackScreenProps<
+  StackParamList,
+  'Points'
+>['navigation'];
+
 const Home: React.FC = () => {
   const [ufs, setUfs] = useState<SelectItem[]>([]);
   const [uf, setUf] = useState('');
   const [cities, setCities] = useState<SelectItem[]>([]);
   const [city, setCity] = useState('');
 
-  const navigation = useNavigation();
+  const { navigate } = useNavigation<NavigateProps>();
 
   const handleNavigationToPoints = useCallback(() => {
     if (uf && city) {
-      navigation.navigate('Points', { uf, city });
+      navigate('Points', { uf, city });
     } else {
       Alert.alert('Escolha um estado e uma cidade!');
     }

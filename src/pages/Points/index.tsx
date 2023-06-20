@@ -5,8 +5,10 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 import * as Location from 'expo-location';
 import { AntDesign } from '@expo/vector-icons';
 import { SvgUri } from 'react-native-svg';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 import api from '../../services/api';
+import { StackParamList } from '../../routes';
 import {
   Container,
   Title,
@@ -47,6 +49,11 @@ interface PointsParams {
   city: string;
 }
 
+type NavigateProps = NativeStackScreenProps<
+  StackParamList,
+  'Points'
+>['navigation'];
+
 const Points: React.FC = () => {
   const [items, setItems] = useState<Item[]>([]);
   const [selectedItems, setSelectedItems] = useState<number[]>([]);
@@ -56,10 +63,10 @@ const Points: React.FC = () => {
   const route = useRoute();
   const { uf, city } = route.params as PointsParams;
 
-  const navigation = useNavigation();
+  const { goBack, navigate } = useNavigation<NavigateProps>();
 
   const handleNavigationToHome = useCallback(() => {
-    navigation.goBack();
+    goBack();
   }, []);
 
   const handleNavigationToDetail = useCallback((id: number) => {

@@ -6,7 +6,18 @@ import Home from '../pages/Home';
 import Points from '../pages/Points';
 import Detail from '../pages/Detail';
 
-const AppStack = createNativeStackNavigator();
+export type StackParamList = {
+  Home: undefined;
+  Points: {
+    city: string;
+    uf: string;
+  };
+  Detail: {
+    pointId: number;
+  };
+};
+
+const AppStack = createNativeStackNavigator<StackParamList>();
 
 export default () => {
   return (
