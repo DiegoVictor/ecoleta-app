@@ -1,7 +1,7 @@
 # [App] Ecoleta
 [![AppVeyor](https://img.shields.io/appveyor/build/diegovictor/ecoleta-app?logo=appveyor&style=flat-square)](https://ci.appveyor.com/project/DiegoVictor/ecoleta-app)
 [![typescript](https://img.shields.io/badge/typescript-4.9.5-3178c6?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
-[![react-native](https://img.shields.io/badge/react--native-0.71.3-61dafb?style=flat-square&logo=react)](https://reactnative.dev/)
+[![react-native](https://img.shields.io/badge/react--native-0.71.8-61dafb?style=flat-square&logo=react)](https://reactnative.dev/)
 [![styled-components](https://img.shields.io/badge/styled_components-5.3.11-db7b86?style=flat-square&logo=styled-components)](https://styled-components.com/)
 [![eslint](https://img.shields.io/badge/eslint-8.43.0-4b32c3?style=flat-square&logo=eslint)](https://eslint.org/)
 [![airbnb-style](https://flat.badgen.net/badge/style-guide/airbnb/ff5a5f?icon=airbnb)](https://github.com/airbnb/javascript)
