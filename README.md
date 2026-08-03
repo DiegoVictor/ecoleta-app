@@ -51,10 +51,10 @@ In this file you may configure the API's url. Rename the `.env.example` in the r
 
 key|description|default
 ---|---|---
-API_URL|API's url with version (v1)|`http://localhost:3333/v1`
+EXPO_PUBLIC_API_URL|API's url with version (v1)|`http://localhost:3333/v1`
 
 ### API
-Start the [`API`](https://github.com/DiegoVictor/ecoleta-api) (see its README for more information). In case of any change in the API's `port` or `host` remember to update the `app.json`'s `API_URL` property too.
+Start the [`API`](https://github.com/DiegoVictor/ecoleta-api) (see its README for more information). In case of any change in the API's `port` or `host` remember to update the `app.json`'s `EXPO_PUBLIC_API_URL` property too.
 > Also, maybe you need run reverse command to the API's port: `adb reverse tcp:3333 tcp:3333` or use the `expo` host (e.g. `192.168.0.9`)
 
 # Usage
