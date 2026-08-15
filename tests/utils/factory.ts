@@ -13,8 +13,8 @@ factory.define(
       email: faker.internet.email,
       whatsapp: faker.phone.number,
       image_url: faker.image.url,
-      latitude: () => Number(faker.location.latitude()),
-      longitude: () => Number(faker.location.longitude()),
+      latitude: faker.location.latitude,
+      longitude: faker.location.longitude,
     },
     items: [
       {
@@ -34,4 +34,4 @@ factory.define(
   },
 );
 
-export default factory;
+export { factory };
