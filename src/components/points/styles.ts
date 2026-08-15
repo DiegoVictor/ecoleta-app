@@ -1,12 +1,17 @@
-import styled, { css } from 'styled-components/native';
 import Constants from 'expo-constants';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { TouchableOpacity } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import styled, { css } from 'styled-components/native';
+
+export const SafeArea = styled(SafeAreaView)`
+  flex: 1;
+`;
 
 export const Container = styled.View`
   flex: 1;
   padding: 0px 32px;
-  padding-top: ${20 + Constants.statusBarHeight}px;
+  padding-top: ${Constants.statusBarHeight}px;
 `;
 
 export const Title = styled.Text`
@@ -23,42 +28,44 @@ export const Description = styled.Text`
 `;
 
 export const MapContainer = styled.View`
-  flex: 1;
+  background-color: blue;
   border-radius: 10px;
+  flex: 1;
   margin-top: 16px;
   overflow: hidden;
   width: 100%;
 `;
 
 export const Map = styled(MapView)`
+  background-color: red;
   height: 100%;
   width: 100%;
 `;
 
 export const Pin = styled(Marker)`
-  height: 100px;
+  height: 110px;
   width: 90px;
 `;
 
-export const PinBox = styled.View`
+export const PinBox = styled.View<{ extraHeight: number }>`
   align-items: center;
   background-color: #34cb79;
   border-radius: 8px;
   flex-direction: column;
-  height: 70px;
+  height: ${props => props.extraHeight + 50}px;
   overflow: hidden;
   width: 90px;
 `;
 
-export const PinArrow = styled.View`
+export const PinArrow = styled.View<{ extraTop: number }>`
   align-items: center;
   position: absolute;
-  top: 60px;
+  top: ${props => props.extraTop + 42}px;
   width: 90px;
 `;
 
 export const PinImage = styled.Image`
-  height: 45px;
+  height: 50px;
   width: 90px;
 `;
 
@@ -67,7 +74,9 @@ export const PinTitle = styled.Text`
   flex: 1;
   font-family: 'Roboto_400Regular';
   font-size: 13px;
-  line-height: 23px;
+  line-height: 15px;
+  padding-top: 3px;
+  text-align: center;
 `;
 
 export const Items = styled.View`
