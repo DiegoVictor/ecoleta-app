@@ -1,34 +1,38 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import { TouchableOpacity, ScrollView, Alert } from 'react-native';
-import { Feather } from '@expo/vector-icons';
-import { useNavigation, useRoute } from '@react-navigation/native';
-import * as Location from 'expo-location';
-import { AntDesign } from '@expo/vector-icons';
-import { SvgUri } from 'react-native-svg';
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
-
-import api from '../../services/api';
-import { StackParamList } from '../../routes';
 import {
   Container,
-  Title,
   Description,
-  MapContainer,
+  Item,
+  Items,
+  Label,
   Map,
+  MapContainer,
   Pin,
+  PinArrow,
+  PinBox,
   PinImage,
   PinTitle,
-  Items,
-  Item,
-  Label,
-  PinBox,
-  PinArrow,
-} from './styles';
+  SafeArea,
+  Title,
+} from '@/components/points/styles';
+import { api } from '@/services/api';
+import { AntDesign } from '@react-native-vector-icons/ant-design';
+import { Feather } from '@react-native-vector-icons/feather';
+import * as Location from 'expo-location';
+import { router, useLocalSearchParams } from 'expo-router';
+import { useEffect, useState } from 'react';
+import { Alert, ScrollView, TouchableOpacity } from 'react-native';
+import { PROVIDER_GOOGLE } from 'react-native-maps';
+import { SvgUri } from 'react-native-svg';
 
 interface Item {
   id: number;
   title: string;
   image_url: string;
+}
+
+interface LatLng {
+  latitude?: number;
+  longitude?: number;
 }
 
 interface Point {
@@ -39,58 +43,34 @@ interface Point {
   longitude: number;
 }
 
-interface LatLng {
-  latitude?: number;
-  longitude?: number;
+interface PointWithTextHeight extends Point {
+  textHeight: number;
 }
 
-interface PointsParams {
-  uf: string;
-  city: string;
-}
-
-type NavigateProps = NativeStackScreenProps<
-  StackParamList,
-  'Points'
->['navigation'];
-
-const Points: React.FC = () => {
+export default function Points() {
   const [items, setItems] = useState<Item[]>([]);
   const [selectedItems, setSelectedItems] = useState<number[]>([]);
   const [position, setPosition] = useState<LatLng>({});
-  const [points, setPoints] = useState<Point[]>([]);
+  const [points, setPoints] = useState<PointWithTextHeight[]>([]);
 
-  const route = useRoute();
-  const { uf, city } = route.params as PointsParams;
+  const { uf, city } = useLocalSearchParams<'/points'>();
 
-  const { goBack, navigate } = useNavigation<NavigateProps>();
+  const handleSelectItem = (id: number) => {
+    if (selectedItems.includes(id)) {
+      const filteredItems = selectedItems.filter(item => item !== id);
+      return setSelectedItems(filteredItems);
+    }
 
-  const handleNavigationToHome = useCallback(() => {
-    goBack();
-  }, []);
-
-  const handleNavigationToDetail = useCallback((id: number) => {
-    navigate('Detail', { pointId: id });
-  }, []);
-
-  const handleSelectItem = useCallback(
-    (id: number) => {
-      if (selectedItems.includes(id)) {
-        const filteredItems = selectedItems.filter(item => item !== id);
-        setSelectedItems(filteredItems);
-      } else {
-        setSelectedItems([...selectedItems, id]);
-      }
-    },
-    [selectedItems],
-  );
+    setSelectedItems([...selectedItems, id]);
+  };
 
   useEffect(() => {
     (async () => {
       try {
         const { data } = await api.get('items');
+
         setItems(data);
-      } catch (err) {
+      } catch {
         Alert.alert('Opa! Alguma coisa deu errado, tente reabrir o Ecoleta!');
       }
     })();
@@ -100,7 +80,7 @@ const Points: React.FC = () => {
     (async () => {
       try {
         if (selectedItems.length > 0) {
-          const { data } = await api.get('/points', {
+          const { data } = await api.get<Point[]>('/points', {
             params: {
               city,
               uf,
@@ -108,11 +88,19 @@ const Points: React.FC = () => {
             },
           });
 
-          setPoints(data);
+          setPoints(() =>
+            data.map(point => {
+              const wordsLength = point.name.split(' ').length;
+              return {
+                ...point,
+                textHeight: wordsLength > 1 ? wordsLength * 22 : 25,
+              };
+            }),
+          );
         } else {
           setPoints([]);
         }
-      } catch (err) {
+      } catch {
         Alert.alert('Opa! Alguma coisa deu errado, tente reabrir o Ecoleta!');
       }
     })();
@@ -124,6 +112,7 @@ const Points: React.FC = () => {
       if (status === 'granted') {
         const location = await Location.getCurrentPositionAsync();
         const { latitude, longitude } = location.coords;
+
         setPosition({ latitude, longitude });
       } else {
         Alert.alert(
@@ -134,9 +123,9 @@ const Points: React.FC = () => {
   }, []);
 
   return (
-    <>
+    <SafeArea>
       <Container>
-        <TouchableOpacity onPress={handleNavigationToHome} testID="back">
+        <TouchableOpacity onPress={() => router.back()} testID="back">
           <Feather name="arrow-left" size={20} color="#34CB79" />
         </TouchableOpacity>
 
@@ -146,34 +135,42 @@ const Points: React.FC = () => {
         <MapContainer>
           {position.latitude && position.longitude && (
             <Map
+              provider={PROVIDER_GOOGLE}
               initialRegion={{
                 latitude: position.latitude,
                 longitude: position.longitude,
-                latitudeDelta: 0.014,
-                longitudeDelta: 0.014,
+                latitudeDelta: 0.015,
+                longitudeDelta: 0.0121,
               }}
             >
               {points.map(point => (
                 <Pin
                   key={point.id.toString()}
-                  onPress={() => handleNavigationToDetail(point.id)}
+                  onPress={() =>
+                    router.navigate({
+                      pathname: '/detail',
+                      params: { pointId: point.id },
+                    })
+                  }
                   coordinate={{
                     latitude: point.latitude,
                     longitude: point.longitude,
                   }}
                   testID={`point_${point.id}`}
                 >
-                  <PinBox>
+                  <PinBox extraHeight={point.textHeight}>
                     <PinImage
+                      resizeMode="cover"
                       source={{
                         uri: point.image_url,
                       }}
-                      resizeMode="cover"
                     />
-                    <PinTitle>{point.name.slice(0, 10)}</PinTitle>
+                    <PinTitle ellipsizeMode="tail">
+                      {point.name.replace(/\s/g, '\n')}
+                    </PinTitle>
                   </PinBox>
-                  <PinArrow>
-                    <AntDesign name="caretdown" size={22} color="#34CB79" />
+                  <PinArrow extraTop={point.textHeight}>
+                    <AntDesign name="caret-down" size={22} color="#34CB79" />
                   </PinArrow>
                 </Pin>
               ))}
@@ -181,6 +178,7 @@ const Points: React.FC = () => {
           )}
         </MapContainer>
       </Container>
+
       <Items>
         <ScrollView
           horizontal
@@ -201,8 +199,6 @@ const Points: React.FC = () => {
           ))}
         </ScrollView>
       </Items>
-    </>
+    </SafeArea>
   );
-};
-
-export default Points;
+}
