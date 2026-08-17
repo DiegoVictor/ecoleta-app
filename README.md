@@ -21,7 +21,6 @@ This app version allow everyone to see all collect points near of you or other l
     * [API](#api)
 * [Usage](#usage)
   * [Expo](#expo)
-  * [OS](#os)
 * [Running the tests](#running-the-tests)
   * [Coverage report](#coverage-report)
 
@@ -65,10 +64,10 @@ Or:
 ```
 $ npm run start
 ```
-> This project was built with [Expo](https://expo.io), to know how to run it in your phone see [Expo client for iOS and Android](https://docs.expo.io/versions/v37.0.0/get-started/installation/#2-mobile-app-expo-client-for-ios) and in your computer see [Running the Expo client on your computer](https://docs.expo.io/versions/v37.0.0/get-started/installation/#running-the-expo-client-on-your-computer).
 
-## OS
-This app was tested only with Android through USB connection and [Genymotion](https://www.genymotion.com/) (Emulator), is strongly recommended to use the same operational system, but of course you can use an emulator or a real device connected through wifi or USB.
+## Expo
+
+This project was built using [Expo](https://expo.dev), to know how to run it in any environment see [Set up your environment](https://docs.expo.dev/get-started/set-up-your-environment).
 
 # Running the tests
 [Jest](https://jestjs.io/) was the choice to test the app, to run:
