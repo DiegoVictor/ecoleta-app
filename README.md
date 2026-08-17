@@ -56,7 +56,21 @@ Start the [`API`](https://github.com/DiegoVictor/ecoleta-api) (see its README fo
 > Also, maybe you need run reverse command to the API's port: `adb reverse tcp:3333 tcp:3333` or use the `expo` host (e.g. `192.168.0.9`)
 
 # Usage
-To start the app run:
+The first build must be through USB connection, so connect your device (or just open your emulator) and run:
+
+```
+$ npm run android
+```
+
+Or:
+
+```
+$ yarn android
+```
+
+> For iOS use `ios` instead of `android`
+
+For the next time you can just start the server running:
 ```
 $ yarn start
 ```
